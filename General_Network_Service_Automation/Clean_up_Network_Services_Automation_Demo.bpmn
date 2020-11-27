@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="PLACEHOLDER_PROCESS_ID" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0uk6xd4</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_17cug66" name="Remove L3VPN on New New York site" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/General_Network_Service_Automation/General_network_service_automation","serviceInstanceId":"","processName":"Process/General_network_service_automation/Remove_L3VPN","processVariables":{"site":"New New York"},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0uk6xd4</bpmn:incoming>
+      <bpmn:outgoing>Flow_0pti7l1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0uk6xd4" sourceRef="StartEvent_1" targetRef="Activity_17cug66" />
+    <bpmn:sequenceFlow id="Flow_0pti7l1" sourceRef="Activity_17cug66" targetRef="Activity_0hcn8sw" />
+    <bpmn:serviceTask id="Activity_0hcn8sw" name="Decommission CE on New New York site" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/General_Network_Service_Automation/General_network_service_automation","serviceInstanceId":"","processName":"Process/General_network_service_automation/Decommission_CE","processVariables":{"site":"New New York","status":"staged"},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0pti7l1</bpmn:incoming>
+      <bpmn:outgoing>Flow_1qv2bgk</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1qv2bgk" sourceRef="Activity_0hcn8sw" targetRef="Activity_1vscev1" />
+    <bpmn:serviceTask id="Activity_1vscev1" name="Remove L3VPN on Wong Ranch site" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/General_Network_Service_Automation/General_network_service_automation","serviceInstanceId":"","processName":"Process/General_network_service_automation/Remove_L3VPN","processVariables":{"site":"Wong Ranch"},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1qv2bgk</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jf6uhv</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1jf6uhv" sourceRef="Activity_1vscev1" targetRef="Activity_0907d6o" />
+    <bpmn:serviceTask id="Activity_0907d6o" name="Decommission CE on Wong Ranch site" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/General_Network_Service_Automation/General_network_service_automation","serviceInstanceId":"","processName":"Process/General_network_service_automation/Decommission_CE","processVariables":{"site":"Wong Ranch","status":"staged"},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1jf6uhv</bpmn:incoming>
+      <bpmn:outgoing>Flow_1e1vbbz</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_0w09ks0">
+      <bpmn:incoming>Flow_1e1vbbz</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1e1vbbz" sourceRef="Activity_0907d6o" targetRef="Event_0w09ks0" />
+    <bpmn:textAnnotation id="TextAnnotation_1xyqq4s">
+      <bpmn:text>The process removes L3VPN configuration from CE and PE devices. Also, it cleans up IPAM:
+?- removes site IP addresses
+?- removes IP prefix
+?- remove site ASN</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1d5ruke" sourceRef="Activity_17cug66" targetRef="TextAnnotation_1xyqq4s" />
+    <bpmn:textAnnotation id="TextAnnotation_104btku">
+      <bpmn:text>The process removes CE managed entity from MSA and marks CE as 'staged' in IPAM system</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0mbkbxx" sourceRef="Activity_0hcn8sw" targetRef="TextAnnotation_104btku" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="PLACEHOLDER_PROCESS_ID">
+      <bpmndi:BPMNShape id="TextAnnotation_1xyqq4s_di" bpmnElement="TextAnnotation_1xyqq4s">
+        <dc:Bounds x="430" y="-60" width="290" height="90" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_104btku_di" bpmnElement="TextAnnotation_104btku">
+        <dc:Bounds x="370" y="220" width="250" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0uk6xd4_di" bpmnElement="Flow_0uk6xd4">
+        <di:waypoint x="209" y="120" />
+        <di:waypoint x="330" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0pti7l1_di" bpmnElement="Flow_0pti7l1">
+        <di:waypoint x="430" y="120" />
+        <di:waypoint x="560" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1qv2bgk_di" bpmnElement="Flow_1qv2bgk">
+        <di:waypoint x="660" y="120" />
+        <di:waypoint x="790" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jf6uhv_di" bpmnElement="Flow_1jf6uhv">
+        <di:waypoint x="890" y="120" />
+        <di:waypoint x="1020" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1e1vbbz_di" bpmnElement="Flow_1e1vbbz">
+        <di:waypoint x="1120" y="120" />
+        <di:waypoint x="1252" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1606387834887_di" bpmnElement="Activity_17cug66">
+        <dc:Bounds x="330" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1606387891250_di" bpmnElement="Activity_0hcn8sw">
+        <dc:Bounds x="560" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1606387916057_di" bpmnElement="Activity_1vscev1">
+        <dc:Bounds x="790" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1606387936432_di" bpmnElement="Activity_0907d6o">
+        <dc:Bounds x="1020" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0w09ks0_di" bpmnElement="Event_0w09ks0">
+        <dc:Bounds x="1252" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1d5ruke_di" bpmnElement="Association_1d5ruke">
+        <di:waypoint x="404" y="80" />
+        <di:waypoint x="435" y="30" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0mbkbxx_di" bpmnElement="Association_0mbkbxx">
+        <di:waypoint x="560" y="150" />
+        <di:waypoint x="445" y="220" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
