@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="PLACEHOLDER_PROCESS_ID" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start Event">
+      <bpmn:outgoing>Flow_0dibitr</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_1pzka60" name="End Event">
+      <bpmn:incoming>Flow_1d1b45a</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1s8p5z6" sourceRef="Activity_0h20kqw" targetRef="Activity_1wfjphd" />
+    <bpmn:sequenceFlow id="Flow_1d1b45a" sourceRef="Activity_1wfjphd" targetRef="Event_1pzka60" />
+    <bpmn:sequenceFlow id="Flow_0dibitr" sourceRef="StartEvent_1" targetRef="Activity_0h20kqw" />
+    <bpmn:serviceTask id="Activity_0h20kqw" name="Activate CE on site" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/General_Network_Service_Automation/General_network_service_automation","serviceInstanceId":"3033","processName":"Process/General_Network_Service_Automation/New_CE","processType":"UPDATE","processVariables":{"ipam_device_id":"1244","customer_details":{"object_id":{"id":"15","object_id":"Planet Express Inc.","param":{"_order":"3000"},"slug":"planet-express-inc"},"devices_list":["DEM-UBI-IOSv-3[10_30_19_152][CE]","DEM-UBI-vSRX-3[10_30_19_153][CE]"],"sites_list":["New New York","Wong Ranch"],"vrf":"Planet_Express_VRF","name":"Planet Express Inc.","customer_id":"15"},"ipam_ms_aliases":{"IPAM Interfaces":"interfaces","Router Prefix Filter":"prefix_filter","Router interfaces":"interfaces","Router BGP neighbours":"bgp_neighbour","Router Import Connected to BGP":"import_connected_to_bgp","IPAM Available Prefixes":"available_prefix","Router BGP speaker":"bgp_speaker","IPAM VLANs":"vlan","IPAM IPv4 prefixes":"prefix","IPAM Tenants":"tenants","IPAM Devices":"devices","IPAM VRFs":"vrf","IPAM IPv4 addresses":"ip_address","IPAM Interface Connections":"interface_connections","Router VRF":"vrf","IPAM Sites":"sites","Router Import advertised routes by BGP":"import_advertised_routes_bgp"},"service_id":"3033","SERVICEINSTANCEID":"3033","TASKINSTANCEID":"23168","EXECNUMBER":"1","UBIQUBEID":"UBIA156","SERVICEINSTANCEREFERENCE":"UBISID3033","TASKID":"2","PROCESSINSTANCEID":"10568","site":"New New York","customer_name":"Planet Express Inc.","status":"staged"},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0dibitr</bpmn:incoming>
+      <bpmn:outgoing>Flow_1s8p5z6</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1wfjphd" name="Provision L3VPN" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/General_Network_Service_Automation/General_network_service_automation","serviceInstanceId":"3033","processName":"Process/General_Network_Service_Automation/New_L3VPN","processType":"UPDATE","processVariables":{"ipam_device_id":"1244","customer_details":{"object_id":{"id":"15","object_id":"Planet Express Inc.","param":{"_order":"3000"},"slug":"planet-express-inc"},"devices_list":["DEM-UBI-IOSv-3[10_30_19_152][CE]","DEM-UBI-vSRX-3[10_30_19_153][CE]"],"sites_list":["New New York","Wong Ranch"],"vrf":"Planet_Express_VRF","name":"Planet Express Inc.","customer_id":"15"},"ipam_ms_aliases":{"IPAM Interfaces":"interfaces","Router Prefix Filter":"prefix_filter","Router interfaces":"interfaces","Router BGP neighbours":"bgp_neighbour","Router Import Connected to BGP":"import_connected_to_bgp","IPAM Available Prefixes":"available_prefix","Router BGP speaker":"bgp_speaker","IPAM VLANs":"vlan","IPAM IPv4 prefixes":"prefix","IPAM Tenants":"tenants","IPAM Devices":"devices","IPAM VRFs":"vrf","IPAM IPv4 addresses":"ip_address","IPAM Interface Connections":"interface_connections","Router VRF":"vrf","IPAM Sites":"sites","Router Import advertised routes by BGP":"import_advertised_routes_bgp"},"service_id":"3033","SERVICEINSTANCEID":"3033","TASKINSTANCEID":"23168","EXECNUMBER":"1","UBIQUBEID":"UBIA156","SERVICEINSTANCEREFERENCE":"UBISID3033","TASKID":"2","PROCESSINSTANCEID":"10568","site":"New New York","customer_name":"Planet Express Inc.","status":"staged"},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1s8p5z6</bpmn:incoming>
+      <bpmn:outgoing>Flow_1d1b45a</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:textAnnotation id="TextAnnotation_0lk82yk">
+      <bpmn:text>The automation includes:
+ - Discovery new CE device
+ - Create ME in MSA
+ - Activate the ME
+ - Configure common CE settings (AAA, logging, network services, etc)
+ - Update info in IPAM</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0p1w6v5" sourceRef="Activity_0h20kqw" targetRef="TextAnnotation_0lk82yk" />
+    <bpmn:textAnnotation id="TextAnnotation_06cpydu">
+      <bpmn:text>The automation includes:
+ - Prepare IP plan and ASN based on IPAM
+ - Configure p2p interfaces on CE and PE
+ - Configure BGP on PE and CE
+ - Configure prefix filter and route announcement
+ - Validate BGP and route announcement</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_08g34gy" sourceRef="Activity_1wfjphd" targetRef="TextAnnotation_06cpydu" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="PLACEHOLDER_PROCESS_ID">
+      <bpmndi:BPMNEdge id="Flow_0dibitr_di" bpmnElement="Flow_0dibitr">
+        <di:waypoint x="209" y="120" />
+        <di:waypoint x="330" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1d1b45a_di" bpmnElement="Flow_1d1b45a">
+        <di:waypoint x="810" y="120" />
+        <di:waypoint x="952" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1s8p5z6_di" bpmnElement="Flow_1s8p5z6">
+        <di:waypoint x="430" y="120" />
+        <di:waypoint x="710" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="162.5" y="145" width="55" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1pzka60_di" bpmnElement="Event_1pzka60">
+        <dc:Bounds x="952" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="945" y="145" width="51" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0lk82yk_di" bpmnElement="TextAnnotation_0lk82yk">
+        <dc:Bounds x="450" y="-130" width="250" height="110" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_06cpydu_di" bpmnElement="TextAnnotation_06cpydu">
+        <dc:Bounds x="820" y="-125" width="320" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1612965857460_di" bpmnElement="Activity_0h20kqw">
+        <dc:Bounds x="330" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1612965866982_di" bpmnElement="Activity_1wfjphd">
+        <dc:Bounds x="710" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0p1w6v5_di" bpmnElement="Association_0p1w6v5">
+        <di:waypoint x="400" y="80" />
+        <di:waypoint x="451" y="-20" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_08g34gy_di" bpmnElement="Association_08g34gy">
+        <di:waypoint x="779" y="80" />
+        <di:waypoint x="829" y="-25" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
