@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="PLACEHOLDER_PROCESS_ID" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start Event">
+      <bpmn:outgoing>Flow_1827kbb</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_01qj2r8" name="End Event">
+      <bpmn:incoming>Flow_1s82iad</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1s82iad" sourceRef="Activity_1iz9rdl" targetRef="Event_01qj2r8" />
+    <bpmn:sequenceFlow id="Flow_1827kbb" sourceRef="StartEvent_1" targetRef="Activity_1kw90dk" />
+    <bpmn:sequenceFlow id="Flow_1chd52l" sourceRef="Activity_1kw90dk" targetRef="Activity_158v5qs" />
+    <bpmn:sequenceFlow id="Flow_1oknie7" sourceRef="Activity_158v5qs" targetRef="Activity_1iz9rdl" />
+    <bpmn:serviceTask id="Activity_1kw90dk" name="Deploy VNF (Openstack uCPE VNF Management)" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/uCPE_Management/uCPE_Management","processName":"Process/uCPE_Management/Deploy_VNF","processType":"CREATE","processVariables":{"openstack_device_id":"UBI1752","floating_ip_network":"13b551ae-6c66-4075-b32e-5132e17a989f","tenant":"29c460835a2146f892f2776759cd3cac","server_name":"MyBranch","availability_zone":"nova","flavor":"0a782a4e-68b6-4be6-9f37-c44dca3ad96f","image":"c01b464e-d714-49ce-8985-94f466c0cfb6","managed_device_name":"MyBranch","device_external_reference":"MyBranch","manufacturer_id":"14020601","model_id":"14020601","device_ip_address":null,"login":"root","password":"$ubiqube","password_admin":"$ubiqube","device_id":null,"position":"PRE_CONFIG","server_id":null,"conf_profile_reference":"UBIPR268","dev_ext_reference":"MyBranch","networks":[{"network":"65a613ad-ad7e-4263-b491-234e792f35af","ip":""},{"network":"31e873aa-4a91-4ee1-9163-9685264a9f17","ip":""}],"uris":[{"uri":"Configuration/LINUX/Generic/flexiwan_conf"}]},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1827kbb</bpmn:incoming>
+      <bpmn:outgoing>Flow_1chd52l</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_158v5qs" name="Setup Flexiwan (Configure Flexiwan SDWAN)" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/ENEA/VNF_Management/Flexiwan/Configure_Flexiwan","processName":"Process/ENEA/VNF_Management/Flexiwan/Process_Setup_Flexiwan","processType":"CREATE","processVariables":{"device_id":"UBI633","name":"MyBranch","defaultRoute":"192.168.2.1","isApproved":"true","destination_network":"48.0.0.3/16","gateway_ip":"192.168.0.10","exec_delay":"1"},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1chd52l</bpmn:incoming>
+      <bpmn:outgoing>Flow_1oknie7</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1iz9rdl" name="Deploy VNF (Private Cloud Management)" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/Private_Cloud/PA_Demo_FTNT/SecureInternetBreakout","processName":"Process/Private_Cloud/PA_Demo_FTNT/Process_DeployVNF","processType":"CREATE","processVariables":{"openstack_device_id":"UBI1752","floating_ip_network":"13b551ae-6c66-4075-b32e-5132e17a989f","tenant":"29c460835a2146f892f2776759cd3cac","server_name":"FGT_VNF","availability_zone":"nova","flavor":"7e74b682-d19a-49d5-9c97-d4d50eedf1fc","image":"5f19dd49-e553-4dda-a6c7-747305bf8a72","onm_network":"65a613ad-ad7e-4263-b491-234e792f35af","onm_network_ip":"192.168.2.5","external_network":"fdf30193-6408-491c-8437-675e64176422","private_network":"31e873aa-4a91-4ee1-9163-9685264a9f17","private_network_ip":"172.16.0.1","customer_id":"23","managed_device_name":"FGT_VNF","device_external_reference":"FGT_VNF","manufacturer_id":"17","model_id":"15102617","device_ip_address":null,"login":"admin","password":"Ubiqube38","password_admin":"Ubiqube38","device_id":null,"position":"PRE_CONFIG","server_id":null,"url_category":"Social Networking","policy_id":103,"jira_device_id":"UBI735","conf_profile_reference":"UBIPR271","dev_ext_reference":"FGT_VNF","uris":[{"uri":"Configuration/FORTINET/FortigateVA/PA_initial_config"}]},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1oknie7</bpmn:incoming>
+      <bpmn:outgoing>Flow_1s82iad</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="PLACEHOLDER_PROCESS_ID">
+      <bpmndi:BPMNEdge id="Flow_1oknie7_di" bpmnElement="Flow_1oknie7">
+        <di:waypoint x="600" y="130" />
+        <di:waypoint x="710" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1chd52l_di" bpmnElement="Flow_1chd52l">
+        <di:waypoint x="380" y="130" />
+        <di:waypoint x="500" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1827kbb_di" bpmnElement="Flow_1827kbb">
+        <di:waypoint x="209" y="130" />
+        <di:waypoint x="280" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1s82iad_di" bpmnElement="Flow_1s82iad">
+        <di:waypoint x="810" y="130" />
+        <di:waypoint x="892" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="112" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="162" y="155" width="56" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_01qj2r8_di" bpmnElement="Event_01qj2r8">
+        <dc:Bounds x="892" y="112" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="885" y="155" width="51" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1613032416288_di" bpmnElement="Activity_1kw90dk">
+        <dc:Bounds x="280" y="90" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1613116056330_di" bpmnElement="Activity_158v5qs">
+        <dc:Bounds x="500" y="90" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1613119211175_di" bpmnElement="Activity_1iz9rdl">
+        <dc:Bounds x="710" y="90" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
