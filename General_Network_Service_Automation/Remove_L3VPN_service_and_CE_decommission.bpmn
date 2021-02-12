@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="PLACEHOLDER_PROCESS_ID" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start Event">
+      <bpmn:outgoing>Flow_16bu4uz</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_1kg2bm5" name="Remove L3VPN service" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/General_Network_Service_Automation/General_network_service_automation","serviceInstanceId":"","processName":"Process/General_network_service_automation/Remove_L3VPN","processType":"UPDATE","processVariables":{},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_16bu4uz</bpmn:incoming>
+      <bpmn:outgoing>Flow_156fsls</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_16bu4uz" sourceRef="StartEvent_1" targetRef="Activity_1kg2bm5" />
+    <bpmn:sequenceFlow id="Flow_156fsls" sourceRef="Activity_1kg2bm5" targetRef="Activity_092r39k" />
+    <bpmn:serviceTask id="Activity_092r39k" name="Decommission CE device" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/General_Network_Service_Automation/General_network_service_automation","serviceInstanceId":"","processName":"Process/General_network_service_automation/Decommission_CE","processType":"UPDATE","processVariables":{},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_156fsls</bpmn:incoming>
+      <bpmn:outgoing>Flow_0nn7h6k</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_1x48uhl" name="End Event">
+      <bpmn:incoming>Flow_0nn7h6k</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0nn7h6k" sourceRef="Activity_092r39k" targetRef="Event_1x48uhl" />
+    <bpmn:textAnnotation id="TextAnnotation_1ncnx2z">
+      <bpmn:text>The automation includes:
+ - Remove p2p link configuration on CE and PE devices;
+ - Remove BGP configuration on CE and PE devices;
+ - Remove route export policy;
+ - Verify changes;
+ - Clean up IPAM</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0so0xwp" sourceRef="Activity_1kg2bm5" targetRef="TextAnnotation_1ncnx2z" />
+    <bpmn:textAnnotation id="TextAnnotation_1qatct9">
+      <bpmn:text>The automation includes:
+ - Remove CE device ME;
+ - Clean up IPAM device
+ - Update topology</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1rvd0h8" sourceRef="Activity_092r39k" targetRef="TextAnnotation_1qatct9" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="PLACEHOLDER_PROCESS_ID">
+      <bpmndi:BPMNShape id="TextAnnotation_1ncnx2z_di" bpmnElement="TextAnnotation_1ncnx2z">
+        <dc:Bounds x="390" y="-160" width="250" height="124" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1qatct9_di" bpmnElement="TextAnnotation_1qatct9">
+        <dc:Bounds x="690" y="-138" width="240" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_16bu4uz_di" bpmnElement="Flow_16bu4uz">
+        <di:waypoint x="209" y="120" />
+        <di:waypoint x="310" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_156fsls_di" bpmnElement="Flow_156fsls">
+        <di:waypoint x="410" y="120" />
+        <di:waypoint x="520" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0nn7h6k_di" bpmnElement="Flow_0nn7h6k">
+        <di:waypoint x="620" y="120" />
+        <di:waypoint x="732" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="162.5" y="145" width="55" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1613059097767_di" bpmnElement="Activity_1kg2bm5">
+        <dc:Bounds x="310" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1613059142581_di" bpmnElement="Activity_092r39k">
+        <dc:Bounds x="520" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1x48uhl_di" bpmnElement="Event_1x48uhl">
+        <dc:Bounds x="732" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="725" y="145" width="51" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0so0xwp_di" bpmnElement="Association_0so0xwp">
+        <di:waypoint x="372" y="80" />
+        <di:waypoint x="407" y="-36" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1rvd0h8_di" bpmnElement="Association_1rvd0h8">
+        <di:waypoint x="598" y="80" />
+        <di:waypoint x="695" y="-58" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
