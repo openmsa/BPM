@@ -11,15 +11,6 @@
     <bpmn:sequenceFlow id="Flow_1827kbb" sourceRef="StartEvent_1" targetRef="Activity_1kw90dk" />
     <bpmn:sequenceFlow id="Flow_1chd52l" sourceRef="Activity_1kw90dk" targetRef="Activity_158v5qs" />
     <bpmn:sequenceFlow id="Flow_1oknie7" sourceRef="Activity_158v5qs" targetRef="Activity_1iz9rdl" />
-    <bpmn:serviceTask id="Activity_1kw90dk" name="Deploy VNF (Openstack uCPE VNF Management)" camunda:type="external" camunda:topic="msa_workflow">
-      <bpmn:extensionElements>
-        <camunda:inputOutput>
-          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/uCPE_Management/uCPE_Management","processName":"Process/uCPE_Management/Deploy_VNF","processType":"CREATE","processVariables":{"openstack_device_id":"UBI1752","floating_ip_network":"13b551ae-6c66-4075-b32e-5132e17a989f","tenant":"29c460835a2146f892f2776759cd3cac","server_name":"MyBranch","availability_zone":"nova","flavor":"0a782a4e-68b6-4be6-9f37-c44dca3ad96f","image":"c01b464e-d714-49ce-8985-94f466c0cfb6","managed_device_name":"MyBranch","device_external_reference":"MyBranch","manufacturer_id":"14020601","model_id":"14020601","device_ip_address":null,"login":"root","password":"$ubiqube","password_admin":"$ubiqube","device_id":null,"position":"PRE_CONFIG","server_id":null,"conf_profile_reference":"UBIPR268","dev_ext_reference":"MyBranch","networks":[{"network":"65a613ad-ad7e-4263-b491-234e792f35af","ip":""},{"network":"31e873aa-4a91-4ee1-9163-9685264a9f17","ip":""}],"uris":[{"uri":"Configuration/LINUX/Generic/flexiwan_conf"}]},"resumeOnFail":false}</camunda:inputParameter>
-        </camunda:inputOutput>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1827kbb</bpmn:incoming>
-      <bpmn:outgoing>Flow_1chd52l</bpmn:outgoing>
-    </bpmn:serviceTask>
     <bpmn:serviceTask id="Activity_158v5qs" name="Setup Flexiwan (Configure Flexiwan SDWAN)" camunda:type="external" camunda:topic="msa_workflow">
       <bpmn:extensionElements>
         <camunda:inputOutput>
@@ -37,6 +28,15 @@
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1oknie7</bpmn:incoming>
       <bpmn:outgoing>Flow_1s82iad</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1kw90dk" name="Deploy VNF (Openstack uCPE VNF Management)" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/uCPE_Management/uCPE_Management","processName":"Process/uCPE_Management/Deploy_VNF","processType":"CREATE","processVariables":{"openstack_device_id":"UBI1752","floating_ip_network":"13b551ae-6c66-4075-b32e-5132e17a989f","tenant":"29c460835a2146f892f2776759cd3cac","server_name":"MyBranch","availability_zone":"nova","flavor":"0a782a4e-68b6-4be6-9f37-c44dca3ad96f","image":"b5d71be6-a92e-44b6-a7e1-36e4fe7d441d","managed_device_name":"MyBranch","device_external_reference":"MyBranch","manufacturer_id":"14020601","model_id":"14020601","device_ip_address":null,"login":"root","password":"$ubiqube","password_admin":"$ubiqube","device_id":null,"position":"PRE_CONFIG","server_id":null,"conf_profile_reference":"UBIPR268","dev_ext_reference":"MyBranch","networks":[{"network":"65a613ad-ad7e-4263-b491-234e792f35af","ip":""},{"network":"31e873aa-4a91-4ee1-9163-9685264a9f17","ip":""}],"uris":[{"uri":"Configuration/LINUX/Generic/flexiwan_conf"}]},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1827kbb</bpmn:incoming>
+      <bpmn:outgoing>Flow_1chd52l</bpmn:outgoing>
     </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -69,14 +69,14 @@
           <dc:Bounds x="885" y="155" width="51" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ServiceTask_1613032416288_di" bpmnElement="Activity_1kw90dk">
-        <dc:Bounds x="280" y="90" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_1613116056330_di" bpmnElement="Activity_158v5qs">
         <dc:Bounds x="500" y="90" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_1613119211175_di" bpmnElement="Activity_1iz9rdl">
         <dc:Bounds x="710" y="90" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1613461616972_di" bpmnElement="Activity_1kw90dk">
+        <dc:Bounds x="280" y="90" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
