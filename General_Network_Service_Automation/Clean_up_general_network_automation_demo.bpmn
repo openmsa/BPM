@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="PLACEHOLDER_PROCESS_ID" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start Event">
+      <bpmn:outgoing>Flow_1th5evm</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1th5evm" sourceRef="StartEvent_1" targetRef="Activity_0051icw" />
+    <bpmn:sequenceFlow id="Flow_1g9n3qn" sourceRef="Activity_0051icw" targetRef="Activity_0zrgfdp" />
+    <bpmn:sequenceFlow id="Flow_1fqqbjb" sourceRef="Activity_0zrgfdp" targetRef="Activity_1t4tgyd" />
+    <bpmn:sequenceFlow id="Flow_1yw42zy" sourceRef="Activity_1t4tgyd" targetRef="Activity_00au4e2" />
+    <bpmn:endEvent id="Event_08zs12l" name="End Event">
+      <bpmn:incoming>Flow_1e0iq0t</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1e0iq0t" sourceRef="Activity_00au4e2" targetRef="Event_08zs12l" />
+    <bpmn:serviceTask id="Activity_0051icw" name="Remove L3VPN for New New York" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/General_Network_Service_Automation/General_network_service_automation","serviceInstanceId":"3118","processName":"Process/General_network_service_automation/Remove_L3VPN","processType":"UPDATE","processVariables":{"ipam_device_id":"1244","customer_details":{"object_id":{"id":"15","object_id":"Planet Express Inc.","param":{"_order":"4000"},"slug":"planet-express-inc"},"devices_list":["DEM-UBI-IOSv-3[10_30_19_152][CE]","DEM-UBI-vSRX-3[10_30_19_153][CE]"],"sites_list":["New New York","Wong Ranch"],"vrf":"Planet_Express_VRF","name":"Planet Express Inc.","customer_id":"15"},"site_asn":"65140","ipam_ms_aliases":{"IPAM Interfaces":"interfaces","Router Prefix Filter":"prefix_filter","Router interfaces":"interfaces","Router BGP neighbours":"bgp_neighbour","Router Import Connected to BGP":"import_connected_to_bgp","IPAM Available Prefixes":"available_prefix","Router BGP speaker":"bgp_speaker","IPAM VLANs":"vlan","IPAM IPv4 prefixes":"prefix","IPAM Tenants":"tenants","IPAM Devices":"devices","IPAM VRFs":"vrf","IPAM IPv4 addresses":"ip_address","IPAM Interface Connections":"interface_connections","Router VRF":"vrf","IPAM Sites":"sites","Router Import advertised routes by BGP":"import_advertised_routes_bgp"},"service_id":"3118","SERVICEINSTANCEID":"3118","TASKINSTANCEID":"23827","EXECNUMBER":"1","UBIQUBEID":"UBIA156","SERVICEINSTANCEREFERENCE":"UBISID3118","TASKID":"3","PROCESSINSTANCEID":"10910","site":"Wong Ranch","site_id":"17","customer_name":"Planet Express Inc.","status":"staged"},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1th5evm</bpmn:incoming>
+      <bpmn:outgoing>Flow_1g9n3qn</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_0zrgfdp" name="Decommission CE on New New York site" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/General_Network_Service_Automation/General_network_service_automation","serviceInstanceId":"3118","processName":"Process/General_network_service_automation/Decommission_CE","processType":"UPDATE","processVariables":{"ipam_device_id":"1244","customer_details":{"object_id":{"id":"15","object_id":"Planet Express Inc.","param":{"_order":"4000"},"slug":"planet-express-inc"},"devices_list":["DEM-UBI-IOSv-3[10_30_19_152][CE]","DEM-UBI-vSRX-3[10_30_19_153][CE]"],"sites_list":["New New York","Wong Ranch"],"vrf":"Planet_Express_VRF","name":"Planet Express Inc.","customer_id":"15"},"site_asn":"65140","ipam_ms_aliases":{"IPAM Interfaces":"interfaces","Router Prefix Filter":"prefix_filter","Router interfaces":"interfaces","Router BGP neighbours":"bgp_neighbour","Router Import Connected to BGP":"import_connected_to_bgp","IPAM Available Prefixes":"available_prefix","Router BGP speaker":"bgp_speaker","IPAM VLANs":"vlan","IPAM IPv4 prefixes":"prefix","IPAM Tenants":"tenants","IPAM Devices":"devices","IPAM VRFs":"vrf","IPAM IPv4 addresses":"ip_address","IPAM Interface Connections":"interface_connections","Router VRF":"vrf","IPAM Sites":"sites","Router Import advertised routes by BGP":"import_advertised_routes_bgp"},"service_id":"3118","SERVICEINSTANCEID":"3118","TASKINSTANCEID":"23827","EXECNUMBER":"1","UBIQUBEID":"UBIA156","SERVICEINSTANCEREFERENCE":"UBISID3118","TASKID":"3","PROCESSINSTANCEID":"10910","site":"Wong Ranch","site_id":"17","customer_name":"Planet Express Inc.","status":"staged"},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1g9n3qn</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fqqbjb</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1t4tgyd" name="Remove L3VPN for Wang Ranch site" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/General_Network_Service_Automation/General_network_service_automation","serviceInstanceId":"3118","processName":"Process/General_network_service_automation/Remove_L3VPN","processType":"UPDATE","processVariables":{"ipam_device_id":"1244","customer_details":{"object_id":{"id":"15","object_id":"Planet Express Inc.","param":{"_order":"4000"},"slug":"planet-express-inc"},"devices_list":["DEM-UBI-IOSv-3[10_30_19_152][CE]","DEM-UBI-vSRX-3[10_30_19_153][CE]"],"sites_list":["New New York","Wong Ranch"],"vrf":"Planet_Express_VRF","name":"Planet Express Inc.","customer_id":"15"},"site_asn":"65140","ipam_ms_aliases":{"IPAM Interfaces":"interfaces","Router Prefix Filter":"prefix_filter","Router interfaces":"interfaces","Router BGP neighbours":"bgp_neighbour","Router Import Connected to BGP":"import_connected_to_bgp","IPAM Available Prefixes":"available_prefix","Router BGP speaker":"bgp_speaker","IPAM VLANs":"vlan","IPAM IPv4 prefixes":"prefix","IPAM Tenants":"tenants","IPAM Devices":"devices","IPAM VRFs":"vrf","IPAM IPv4 addresses":"ip_address","IPAM Interface Connections":"interface_connections","Router VRF":"vrf","IPAM Sites":"sites","Router Import advertised routes by BGP":"import_advertised_routes_bgp"},"service_id":"3118","SERVICEINSTANCEID":"3118","TASKINSTANCEID":"23827","EXECNUMBER":"1","UBIQUBEID":"UBIA156","SERVICEINSTANCEREFERENCE":"UBISID3118","TASKID":"3","PROCESSINSTANCEID":"10910","site":"New New York","site_id":"17","customer_name":"Planet Express Inc.","status":"staged"},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1fqqbjb</bpmn:incoming>
+      <bpmn:outgoing>Flow_1yw42zy</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_00au4e2" name="Decommission CE device on Wang Ranch site" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">{"ubiqubeId":"PLACEHOLDER_UBIQUBE_ID","serviceName":"Process/General_Network_Service_Automation/General_network_service_automation","serviceInstanceId":"3118","processName":"Process/General_network_service_automation/Decommission_CE","processType":"UPDATE","processVariables":{"ipam_device_id":"1244","customer_details":{"object_id":{"id":"15","object_id":"Planet Express Inc.","param":{"_order":"4000"},"slug":"planet-express-inc"},"devices_list":["DEM-UBI-IOSv-3[10_30_19_152][CE]","DEM-UBI-vSRX-3[10_30_19_153][CE]"],"sites_list":["New New York","Wong Ranch"],"vrf":"Planet_Express_VRF","name":"Planet Express Inc.","customer_id":"15"},"site_asn":"65140","ipam_ms_aliases":{"IPAM Interfaces":"interfaces","Router Prefix Filter":"prefix_filter","Router interfaces":"interfaces","Router BGP neighbours":"bgp_neighbour","Router Import Connected to BGP":"import_connected_to_bgp","IPAM Available Prefixes":"available_prefix","Router BGP speaker":"bgp_speaker","IPAM VLANs":"vlan","IPAM IPv4 prefixes":"prefix","IPAM Tenants":"tenants","IPAM Devices":"devices","IPAM VRFs":"vrf","IPAM IPv4 addresses":"ip_address","IPAM Interface Connections":"interface_connections","Router VRF":"vrf","IPAM Sites":"sites","Router Import advertised routes by BGP":"import_advertised_routes_bgp"},"service_id":"3118","SERVICEINSTANCEID":"3118","TASKINSTANCEID":"23827","EXECNUMBER":"1","UBIQUBEID":"UBIA156","SERVICEINSTANCEREFERENCE":"UBISID3118","TASKID":"3","PROCESSINSTANCEID":"10910","site":"New New York","site_id":"17","customer_name":"Planet Express Inc.","status":"staged"},"resumeOnFail":false}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1yw42zy</bpmn:incoming>
+      <bpmn:outgoing>Flow_1e0iq0t</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:textAnnotation id="TextAnnotation_0norktj">
+      <bpmn:text>The automation includes:
+ - Remove p2p link configuration on CE and PE devices;
+ - Remove BGP configuration on CE and PE devices;
+ - Remove route export policy;
+ - Verify changes;
+ - Clean up IPAM</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1tu8vox" sourceRef="Activity_0051icw" targetRef="TextAnnotation_0norktj" />
+    <bpmn:textAnnotation id="TextAnnotation_0fzx9n5">
+      <bpmn:text>The automation includes:
+ - Remove CE device ME;
+ - Clean up IPAM device
+ - Update topology</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0v86epn" sourceRef="Activity_0zrgfdp" targetRef="TextAnnotation_0fzx9n5" />
+    <bpmn:textAnnotation id="TextAnnotation_1d0z41a">
+      <bpmn:text>The automation includes:
+ - Remove p2p link configuration on CE and PE devices;
+ - Remove BGP configuration on CE and PE devices;
+ - Remove route export policy;
+ - Verify changes;
+ - Clean up IPAM</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0d0oxiy" sourceRef="Activity_1t4tgyd" targetRef="TextAnnotation_1d0z41a" />
+    <bpmn:textAnnotation id="TextAnnotation_14szy7m">
+      <bpmn:text>The automation includes:
+ - Remove CE device ME;
+ - Clean up IPAM device
+ - Update topology</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1fz81dr" sourceRef="Activity_00au4e2" targetRef="TextAnnotation_14szy7m" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="PLACEHOLDER_PROCESS_ID">
+      <bpmndi:BPMNEdge id="Flow_1e0iq0t_di" bpmnElement="Flow_1e0iq0t">
+        <di:waypoint x="1160" y="120" />
+        <di:waypoint x="1322" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yw42zy_di" bpmnElement="Flow_1yw42zy">
+        <di:waypoint x="900" y="120" />
+        <di:waypoint x="1060" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fqqbjb_di" bpmnElement="Flow_1fqqbjb">
+        <di:waypoint x="640" y="120" />
+        <di:waypoint x="800" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1g9n3qn_di" bpmnElement="Flow_1g9n3qn">
+        <di:waypoint x="420" y="120" />
+        <di:waypoint x="540" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1th5evm_di" bpmnElement="Flow_1th5evm">
+        <di:waypoint x="209" y="120" />
+        <di:waypoint x="320" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="162.5" y="145" width="55" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_08zs12l_di" bpmnElement="Event_08zs12l">
+        <dc:Bounds x="1322" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1315" y="145" width="51" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0norktj_di" bpmnElement="TextAnnotation_0norktj">
+        <dc:Bounds x="390" y="-110" width="320" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0fzx9n5_di" bpmnElement="TextAnnotation_0fzx9n5">
+        <dc:Bounds x="730" y="-60" width="190" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1d0z41a_di" bpmnElement="TextAnnotation_1d0z41a">
+        <dc:Bounds x="910" y="250" width="330" height="102" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_14szy7m_di" bpmnElement="TextAnnotation_14szy7m">
+        <dc:Bounds x="1170" y="-60" width="190" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1614339296752_di" bpmnElement="Activity_0051icw">
+        <dc:Bounds x="320" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1614339301032_di" bpmnElement="Activity_0zrgfdp">
+        <dc:Bounds x="540" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1614339312033_di" bpmnElement="Activity_1t4tgyd">
+        <dc:Bounds x="800" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1614339321214_di" bpmnElement="Activity_00au4e2">
+        <dc:Bounds x="1060" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1tu8vox_di" bpmnElement="Association_1tu8vox">
+        <di:waypoint x="381" y="80" />
+        <di:waypoint x="400" y="10" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0v86epn_di" bpmnElement="Association_0v86epn">
+        <di:waypoint x="634" y="81" />
+        <di:waypoint x="730" y="-2" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0d0oxiy_di" bpmnElement="Association_0d0oxiy">
+        <di:waypoint x="880" y="160" />
+        <di:waypoint x="949" y="250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1fz81dr_di" bpmnElement="Association_1fz81dr">
+        <di:waypoint x="1137" y="80" />
+        <di:waypoint x="1191" y="0" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -2,16 +2,20 @@
 <metadata>
     <map>
         <entry>
+            <key>DISPLAYNAME</key>
+            <value>Start_to_work_with_a_customer.bpmn</value>
+        </entry>
+        <entry>
             <key>DATE_MODIFICATION</key>
-            <value>1606397586911</value>
+            <value>1618313052794</value>
         </entry>
         <entry>
             <key>REPOSITORY</key>
-            <value>Datafiles</value>
+            <value>Bpmn</value>
         </entry>
         <entry>
             <key>DATE_CREATION</key>
-            <value>1606397586903</value>
+            <value>1618313052790</value>
         </entry>
         <entry>
             <key>TAG</key>
